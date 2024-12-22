@@ -9,7 +9,7 @@ module Realtime.Types
 import Data.Bits (shiftR, (.&.))
 import Data.Hashable (hash)
 import Data.Maybe (fromMaybe)
-import Sound.OSC
+import Sound.Osc
 
 
 data TidalPacket = TidalPacket

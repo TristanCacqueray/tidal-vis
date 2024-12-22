@@ -24,8 +24,8 @@ import Data.Time (diffUTCTime, getCurrentTime)
 import Network.Socket (SockAddr (..), addrAddress, getAddrInfo)
 import Sound.Tidal.Context
 
-import qualified Sound.OSC.FD as OSC
-import qualified Sound.Tidal.Tempo as Tempo
+import qualified Sound.Osc.Fd as OSC
+import qualified Sound.Tidal.Time as Time
 
 
 -- | Common functions.
@@ -130,6 +130,5 @@ remoteLocal config time = do
       newMVar $ Tempo.defaultTempo time local remote
     _ -> error "wrong Socket"
 
-toPattern :: [Event ControlMap] -> ControlPattern
+toPattern :: [Event ValueMap] -> ControlPattern
 toPattern evs = Pattern $ const evs
-

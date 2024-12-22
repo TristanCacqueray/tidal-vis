@@ -65,7 +65,8 @@ library
                   , SDL-ttf
                   , mtl
                   , network
-                  , tidal >= 1.0.15 && < 1.7
+                  , tidal >= 1.10.0
+                  , tidal-parse
                   , time
                   , unagi-chan
 

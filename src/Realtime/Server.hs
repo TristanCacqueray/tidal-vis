@@ -6,10 +6,10 @@ import Control.Concurrent
 import Control.Concurrent.Async (race_)
 import Control.Concurrent.Chan.Unagi.Bounded (InChan, OutChan)
 import Control.Monad
-import Sound.OSC
+import Sound.Osc
 
 import qualified Control.Concurrent.Chan.Unagi.Bounded as U
-import qualified Sound.OSC.FD as FD
+import qualified Sound.Osc.Fd as FD
 
 import Realtime.Animation (movingPatterns)
 import Realtime.Types (ColorI, TidalPacket (..), packetToTidalPacket)
@@ -24,7 +24,7 @@ animeCollectorServerU = do
     mvar <- newEmptyMVar
     race_ (hoscServerTPU inChan) $ race_ (collector outChan mvar) (movingPatterns mvar)
 
-t0 :: IO UDP
+t0 :: IO Udp
 t0 = udpServer "127.0.0.1" 5050
 
 -- Listen to osc packets and write them to channel.
@@ -53,6 +53,3 @@ collector outChan mvColors = do
 -- Take time and color.
 toTuple :: TidalPacket -> (Double, [ColorI]) -> (Double, [ColorI])
 toTuple tp (f,tps) = (f, tpColor tp : tps)
-
-
-
